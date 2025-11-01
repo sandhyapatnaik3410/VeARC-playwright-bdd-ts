@@ -4,10 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --require-module ts-node/register  --require 'Hooks/hooks.ts' --require 'step-definitions/**/*.ts' 'features/**/*.feature'",
-    "test:ui": "cucumber-js allure-cucumberjs/reporter:./allure-results --tags \"@UI\" --require-module ts-node/register  --require 'Hooks/hooks.ts' --require 'step-definitions/**/*.ts' 'features/**/*.feature'",
-    "test:api": "cucumber-js --tags \"@API\" --require-module ts-node/register --require 'step-definitions/**/*.ts' 'features/**/*.feature'",
-    "test:all": "cucumber-js --tags \"@UI or @API\" --require-module ts-node/register --require 'step-definitions/**/*.ts' 'features/**/*.feature'",
+    "test": "node scripts/run-and-report.js",
+    "test:ui": "node scripts/run-and-report.js --tags \"@UI\" --require-module ts-node/register --require Hooks/hooks.ts --require \"step-definitions/**/*.ts\" \"features/**/*.feature\"",
+    "test:api": "node scripts/run-and-report.js --tags \"@API\" --require-module ts-node/register --require \"step-definitions/**/*.ts\" \"features/**/*.feature\"",
+    "test:all": "node scripts/run-and-report.js --tags \"@UI or @API\" --require-module ts-node/register --require \"step-definitions/**/*.ts\" \"features/**/*.feature\"",
+
+    "test:bdd": "cucumber-js --config cucumber.json",
+    "report:generate": "ts-node utils/generateReport.ts",
+    "test:report": "npm run test:bdd && npm run report:generate",
+
     "allure:generate": "allure generate ./allure-results --clean -o ./test-results/allure-report",
     "allure:open": "allure open ./test-results/allure-report"
   },
@@ -22,6 +27,7 @@
     "ajv": "^8.17.1",
     "allure-commandline": "^2.34.1",
     "allure-cucumberjs": "^3.4.2",
+    "multiple-cucumber-html-reporter": "^3.9.3",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"

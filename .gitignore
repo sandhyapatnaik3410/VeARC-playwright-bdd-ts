@@ -5,4 +5,5 @@ test-results/
 allure-report/
 .env
 .vscode/
-.DS_Store
+.DS_Store/
+reports

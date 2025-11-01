@@ -8,7 +8,7 @@ export class LoginPage {
   private usernameInput = 'input[name="username"]';
   private passwordInput = 'input[name="password"]';
   private loginButton = 'button[name="submitLogin"]';
-  private dashboardHeader = 'h1.dashboard-title';
+  private automationLink = 'a[name="automations"]';
 
   async navigate(url: string): Promise<void>  {
     await this.page.goto(url, { timeout: 120000 });
@@ -21,7 +21,22 @@ export class LoginPage {
   }
 
   async clickLogin() : Promise<void> {
-    await this.page.click(this.loginButton);
+    console.log("[LoginPage] Clicking on Login button...");
+  await this.page.click(this.loginButton);
+
+  // Wait until navigation completes or home element appears
+  const homePageLoaded = await this.page.waitForSelector(this.automationLink, {
+    state: 'visible',
+    timeout: 15000, // wait up to 15 seconds for home page to load
+  }).then(() => true).catch(() => false);
+
+  if (homePageLoaded) {
+    console.log("Home page loaded successfully after login.");
+  } else {
+    console.error("Home page did not load or Automation link not found.");
+    throw new Error("Login failed: Automation link not visible after clicking login.");
+  }
+
   }
 
 }
