@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './features', // Cucumber features will use this indirectly for context
-  timeout: 120 * 1000,   /* Global timeout */
+  timeout: 60 * 1000,   /* Global timeout */
   expect: {
     timeout: 60000,
   },
@@ -13,7 +13,7 @@ export default defineConfig({
 
   use: {
     headless: false,
-    baseURL: 'https://community.cloud.automationanywhere.digital', // default API/UI base
+    baseURL: 'https://demowebshop.tricentis.com/', // default API/UI base
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure', // capture Playwright traces for failed tests

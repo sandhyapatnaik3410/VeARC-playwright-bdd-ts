@@ -1,4 +1,5 @@
 import { Page } from 'playwright';
+import { helper } from '../Fixtures/fixture';
 
 export class HomePage {
   constructor(private page: Page) {
@@ -8,8 +9,10 @@ export class HomePage {
 
   private automationLink = 'a[name="automations"]';
 
-  async navigateToAutomation() {
-    await this.page.click(this.automationLink);
+  async navigateToPage(pageName: string ) {
+
+    helper.clickLinkByText(pageName);
+    console.log(`Navigated to the "${pageName}" page successfully`);
   }
 }
 

@@ -3,7 +3,6 @@ import { Page } from 'playwright';
 export class Helper {
 
   constructor(private page: Page) {
-      this.page = page;
     }
 
   /**
@@ -24,4 +23,19 @@ export class Helper {
     console.log(`Generated unique name: ${uniqueName}`);
     return uniqueName;
   }
+
+  async getLinkText(visibleText: string): Promise<string> {
+    const locator = this.page.locator(`a:has-text("${visibleText}")`);
+    await locator.waitFor({ state: 'visible', timeout: 5000 });
+    const text = await locator.innerText();
+    return text.trim();
+  }
+
+  async clickLinkByText(visibleText: string): Promise<void> {
+    const locator = this.page.locator(`a:has-text("${visibleText}")`).first();
+    await locator.waitFor({ state: 'visible', timeout: 6000 });
+    await locator.click({force: true});
+    console.log(`Clicked on link with text: "${visibleText}"`);
+  }
+
 }

@@ -83,7 +83,6 @@ playwright-bdd-ts/
 ├── pages/                    # Page Object Model classes for UI tests
 │   ├── LoginPage.ts
 │   ├── HomePage.ts
-│   ├── TaskBotPage.ts
 │   └── ...
 ├── reports/                    # To store reports after each execution
 │   ├── html
@@ -92,15 +91,11 @@ playwright-bdd-ts/
 ├── scripts/                    # To generate reports automatically after each execution
 │   ├── run-and-report.js
 ├── step-definitions/         # Step definition files mapping to feature steps
-│   ├── apiLoginSteps.ts
-│   ├── AutomationPageStep.ts
 │   └── Loginstep.ts
 ├── utils/                    # Helper & utility classes
-│   ├── apiHelper.ts
 │   ├── generateReport.ts
 │   ├── globalVariables.ts
 │   ├── helper.ts
-│   └── payloadReader.ts
 ├── .gitignore.json             
 ├── cucumber.json              
 ├── package.json              # NPM configuration

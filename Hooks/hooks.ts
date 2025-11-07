@@ -75,7 +75,7 @@ After(async function (this: any, scenario: any) {
   try {
     const activeBrowser: Browser | undefined = this.browser;
     if (activeBrowser && activeBrowser.isConnected()) {
-      await activeBrowser.close();
+      // await activeBrowser.close();
       console.log("Browser closed after scenario execution.");
     } else {
       console.warn("No active browser instance found to close.");

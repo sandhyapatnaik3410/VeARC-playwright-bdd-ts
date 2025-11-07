@@ -1,6 +1,6 @@
 import { Given, When, Then, setDefaultTimeout } from "@cucumber/cucumber";
 import { chromium, Browser, BrowserContext, Page } from "playwright";
-import { initPages, loginPage } from '../Fixtures/fixture';
+import { helper, initPages, loginPage } from '../Fixtures/fixture';
 // import { setBrowser } from "../Hooks/hooks";
 import config from "../playwright.config";
 
@@ -43,7 +43,16 @@ When("I navigate to a url", async function () {
   await loginPage.navigate(baseURL);
 });
 
-Given("the user is logged into the Automation Anywhere application", async function () {
-  await loginPage.enterCredentials('sandhyarani.p413@gmail.com', 'C@rby3410');
+Then("click on the login link", async function () {
+  await loginPage.clickLoginLink();
+});
+
+When('the user navigates to the {string} link', async function (workspaceName: string) {
+  helper.clickLinkByText(workspaceName);
+  console.log(`Clicked on "${workspaceName}" link `);
+});
+
+Given("logged into the Demo Web Shop application of Tricentis", async function () {
+  await loginPage.enterCredentials('test11nov@test.com', '123456');
   await loginPage.clickLogin();
 });
