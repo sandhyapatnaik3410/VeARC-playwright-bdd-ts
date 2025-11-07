@@ -5,8 +5,8 @@ Feature: Login functionality
     Then click on the login link
     Given logged into the Demo Web Shop application of Tricentis
   #   When the user navigates to the "Shopping cart" page
-  # When the user clears the cart
-  #    Then the cart should be empty
+  #   When the user clears the cart
+  #   Then the cart should be empty
 
 
   @UI
@@ -25,5 +25,6 @@ Feature: Login functionality
     Then I click on continue button
     Then I click on continue button
     Then I click on confirm button
+    Then verify the order creation success message
 
 

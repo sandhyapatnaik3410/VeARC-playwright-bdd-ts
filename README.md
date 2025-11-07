@@ -1,17 +1,16 @@
 # Playwright BDD TypeScript Framework (`playwright-bdd-ts`)
 
 * This repository contains a **Behavior-Driven Development (BDD)** automation framework built using **Playwright**, **Cucumber**, and **TypeScript**.  
-* It supports both **UI** and **API** test automation within a single unified project structure, enabling maintainable, scalable, and reusable test design.
+* It supports **UI** test automation within a single unified project structure, enabling maintainable, scalable, and reusable test design.
 
 ---
 
 ## Key Features
 
-- Unified framework for **UI** and **API** test automation  
+- Unified framework for **UI** test automation  
 - Built on **Playwright + TypeScript** with **Cucumber BDD** syntax  
-- Supports test tagging (`@UI`, `@API`) for selective execution  
+- Supports test tagging (`@UI`) for selective execution  
 - Reusable **page object model (POM)** for UI automation  
-- JSON-driven payloads for API test data  
 - Modular utilities for payload reading, helper functions, and context handling  
 - Clean TypeScript build with strong typing and model classes  
 - Reporting integration ready (HTML/Allure can be added later)
@@ -37,10 +36,7 @@ This installs all dependencies listed in package.json.
 1. Run All Tests
     # npm test
 
-2. Run Only API Scenarios
-    # npm run test:api
-
-3. Run Only UI Scenarios
+2. Run Only UI Scenarios
     # npm run test:ui
 
 ---
@@ -68,11 +64,8 @@ Latest HTML report location: /reports/html/latest/index.html
 
 playwright-bdd-ts/
 ├── Data/                     # Static test data & API payloads
-│   ├── apiPayloads.json
-│   └── data_file.pdf
 ├── features/                 # Cucumber feature files
-│   ├── Api.feature
-│   └── AutomationBots.feature
+│   └── webShop.feature
 ├── Fixtures/                 # Shared test fixtures
 │   └── fixture.ts
 ├── Hooks/                    # Global Cucumber hooks (Before/After)
