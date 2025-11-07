@@ -11,6 +11,7 @@ let page: Page;
 
 When('I add {string} to the cart', async function (productName: string) {
   await productsPage.addProductToCart(productName);
+  console.log('"${productName}" product added successfully')
 });
 
 When('the user navigates to the {string} page', async function (linkName: string) {
@@ -62,9 +63,9 @@ Then('I accept the terms and conditions', async function () {
 });
 
 
-Then('I click on continue button', async function () {
-    productsPage.clickOnContinueBtn();
-    console.log("Clicked on continue button");
+Then('I click on continue button for {string} section', async function (sectionName: string) {
+  await productsPage.clickOnContinueBtn(sectionName);
+  console.log(`Clicked on continue button for "${sectionName}"`);
 });
 
 Then('I click on confirm button', async function () {

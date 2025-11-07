@@ -3,6 +3,9 @@ import { chromium, Browser, BrowserContext, Page } from "playwright";
 import { helper, initPages, loginPage } from '../Fixtures/fixture';
 // import { setBrowser } from "../Hooks/hooks";
 import config from "../playwright.config";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 
 let browser: Browser;
@@ -52,7 +55,18 @@ When('the user navigates to the {string} link', async function (workspaceName: s
   console.log(`Clicked on "${workspaceName}" link `);
 });
 
+// Given("logged into the Demo Web Shop application of Tricentis", async function () {
+//   await loginPage.enterCredentials('test11nov@test.com', '123456');
+//   await loginPage.clickLogin();
+// });
 Given("logged into the Demo Web Shop application of Tricentis", async function () {
-  await loginPage.enterCredentials('test11nov@test.com', '123456');
+  const username = process.env.DEMO_USERNAME ?? '';
+  const password = process.env.DEMO_PASSWORD ?? '';
+
+  if (!username || !password) {
+    throw new Error('Username or password not provided in environment variables');
+  }
+
+  await loginPage.enterCredentials(username, password);
   await loginPage.clickLogin();
 });

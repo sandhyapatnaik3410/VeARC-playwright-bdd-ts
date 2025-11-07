@@ -8,7 +8,6 @@ Feature: Login functionality
   #   When the user clears the cart
   #   Then the cart should be empty
 
-
   @UI
   Scenario: Verify user is able to checkout product
     When the user navigates to the "Books" link
@@ -16,15 +15,17 @@ Feature: Login functionality
     When I add "Computing and Internet" to the cart
     When the user navigates to the "Shopping cart" page
     Then the item name "Computing and Internet" should be visible in the Shopping Cart page
-    # Then verify the cart should show 2 items
+    Then verify the cart should show 2 items
     Then I accept the terms and conditions
     Then I click on the checkout button
-    Then I click on continue button
-    Then I click on continue button
-    Then I click on continue button
-    Then I click on continue button
-    Then I click on continue button
+    Then I click on continue button for "Billing address" section
+    Then I click on continue button for "Shipping address" section
+    Then I click on continue button for "Shipping method" section
+    Then I click on continue button for "Payment method" section
+    Then I click on continue button for "Payment information" section
     Then I click on confirm button
     Then verify the order creation success message
+    Then I click on continue button for "Thank you" section
+
 
 
